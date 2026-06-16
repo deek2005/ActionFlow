@@ -10,14 +10,11 @@ import spacy
 from groq import Groq
 import base64
 
-# -------------------------------
 # Page configuration
-# -------------------------------
 st.set_page_config(page_title="ActionFlow", layout="wide", initial_sidebar_state="expanded")
 
-# -------------------------------
+
 # Custom CSS for smooth cursor & glassmorphism
-# -------------------------------
 st.markdown("""
 <style>
     /* Smooth cursor transition & custom cursor */
@@ -70,15 +67,11 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# -------------------------------
 # Title & description
-# -------------------------------
 st.title("✨ ActionFlow – Cognitive Meeting Intelligence")
 st.markdown("*Turn conversations into commitments — hybrid AI, smooth as glass.*")
 
-# -------------------------------
 # Load spaCy model (cached)
-# -------------------------------
 @st.cache_resource
 def load_spacy_model():
     try:
@@ -90,9 +83,7 @@ def load_spacy_model():
 
 nlp = load_spacy_model()
 
-# -------------------------------
 # Sidebar: API key & info
-# -------------------------------
 with st.sidebar:
     st.header("⚙️ AI Engine")
     groq_api_key = st.text_input("Groq API Key", type="password", 
@@ -112,9 +103,7 @@ with st.sidebar:
     st.markdown("###  How to use")
     st.markdown("1. Paste transcript or upload audio\n2. Click **Extract**\n3. Edit table inline\n4. Download CSV/JSON")
 
-# -------------------------------
 # Hybrid extraction function
-# -------------------------------
 def extract_actions_hybrid(transcript):
     """Combine regex, spaCy NER, and Groq LLM for robust action extraction"""
     actions = []
@@ -242,9 +231,7 @@ def transcribe_audio(file_bytes, filename):
     finally:
         os.unlink(tmp_path)
 
-# -------------------------------
 # Main UI: two columns
-# -------------------------------
 col_left, col_right = st.columns([1, 1], gap="medium")
 
 with col_left:
