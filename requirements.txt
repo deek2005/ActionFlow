@@ -1,0 +1,6 @@
+streamlit
+pandas
+groq
+spacy
+dateparser
+audio-recorder-streamlit
